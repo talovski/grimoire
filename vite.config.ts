@@ -1,4 +1,5 @@
 /// <reference types="vitest" />
+import path from 'path';
 import { defineConfig } from 'vite';
 import solid from 'vite-plugin-solid';
 
@@ -12,5 +13,8 @@ export default defineConfig({
 	},
 	worker: {
 		format: 'es',
+	},
+	resolve: {
+		alias: { '@': path.resolve(__dirname, './src') },
 	},
 });

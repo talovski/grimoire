@@ -3,6 +3,7 @@ import { render } from 'solid-js/web';
 import App from './App.tsx';
 import './index.css';
 import { Route, Router } from '@solidjs/router';
+import Create from '@/pages/Create.tsx';
 
 const root = document.getElementById('root');
 
@@ -14,7 +15,7 @@ render(
 	() => (
 		<Router>
 			<Route component={App} path="/" />
-			<Route component={App} path="/create" />
+			<Route component={Create} path="/create" />
 		</Router>
 	),
 	root!,
