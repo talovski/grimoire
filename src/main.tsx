@@ -4,6 +4,8 @@ import App from './App.tsx';
 import './index.css';
 import { Route, Router } from '@solidjs/router';
 import Create from '@/pages/Create.tsx';
+import '@unocss/reset/normalize.css';
+import 'virtual:uno.css';
 
 const root = document.getElementById('root');
 

@@ -13,13 +13,17 @@
 		"@fontsource-variable/alegreya": "^5.2.8",
 		"@fontsource/pt-sans": "^5.2.8",
 		"@solidjs/router": "^0.15.3",
-		"solid-js": "^1.9.9"
+		"solid-js": "^1.9.9",
+		"unocss": "^66.5.3"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.2.5",
 		"@solidjs/testing-library": "^0.8.10",
 		"@testing-library/jest-dom": "^6.9.1",
 		"@types/node": "^24.6.0",
+		"@unocss/core": "^66.5.3",
+		"@unocss/preset-attributify": "^66.5.3",
+		"@unocss/reset": "^66.5.3",
 		"happy-dom": "^20.0.0",
 		"typescript": "~5.9.3",
 		"vite": "^7.1.7",

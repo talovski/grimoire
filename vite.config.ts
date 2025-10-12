@@ -1,10 +1,11 @@
 /// <reference types="vitest" />
-import path from 'path';
+import path from 'node:path';
+import UnoCSS from 'unocss/vite';
 import { defineConfig } from 'vite';
 import solid from 'vite-plugin-solid';
 
 export default defineConfig({
-	plugins: [solid()],
+	plugins: [UnoCSS(), solid()],
 	css: {
 		modules: { localsConvention: 'camelCase' },
 	},
