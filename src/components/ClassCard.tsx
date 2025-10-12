@@ -5,10 +5,10 @@ import { setCharacter } from '@/stores/character';
 export default function ClassCard({ classData }: { classData: CleanClass }) {
 	const [showProgression, setShowProgression] = createSignal(false);
 	return (
-		<div class="pos-relative grid grid-cols-[1fr_auto]">
-			<h3>{classData.name}</h3>
+		<div class="bg-neutral100 pos-relative rounded-md p-5 grid grid-cols-[1fr_auto] shadow-sm">
+			<h3 class="text-2xl p-b-2">{classData.name}</h3>
 			<button
-				class="grid-col-start-2 pos-sticky top-4"
+				class="grid-col-start-2 pos-sticky top-4 pos-relative z-1 shadow-lg hover:shadow-xl"
 				onclick={() =>
 					setCharacter({
 						class: classData.slug,
@@ -21,16 +21,28 @@ export default function ClassCard({ classData }: { classData: CleanClass }) {
 			>
 				Select class
 			</button>
-			<div class="grid-col-span-2">
+			<div class="grid-col-span-2 flex flex-col gap-3">
 				<For each={classData.features.level1}>{(feat) => <ClassFeature feat={feat} />}</For>
 			</div>
 			<div class="grid-col-span-2 p-t-3">
-				<button onclick={() => setShowProgression((prev) => !prev)}>
-					{showProgression() ? 'Hide' : 'Show'} progression
+				<button class="flex gap-1" onclick={() => setShowProgression((prev) => !prev)}>
+					{showProgression() ? 'Hide' : 'Show'} progression{' '}
+					<span>
+						<Chevron isOpen={showProgression()} />
+					</span>
 				</button>
-				<Show when={showProgression()}>
-					<div class="text-sm p-t-3" innerHTML={classData.table} />
-				</Show>
+				<div
+					class="text-sm p-t-3 grid transition-all duration-400 ease-in-out gap-3"
+					style={{
+						'grid-template-rows': showProgression() ? '1fr' : '0fr',
+						visibility: showProgression() ? 'visible' : 'hidden',
+					}}
+				>
+					<div class="overflow-hidden flex flex-col gap-3">
+						<div innerHTML={classData.table} />
+						<For each={classData.features.progression}>{(feat) => <ClassFeature feat={feat} />}</For>
+					</div>
+				</div>
 			</div>
 		</div>
 	);
@@ -42,16 +54,22 @@ function ClassFeature({ feat }: { feat: { title: string; level: number; descript
 	return (
 		<div>
 			<p class="font-bold">{feat.title}</p>
-			<div class="grid grid-cols-[1fr_auto]">
+			<div class="grid grid-cols-[1fr_auto] column-gap-2">
 				<div innerHTML={feat.description[0]} />
 				<Show when={feat.description.length > 1}>
-					<button class="grid-col-start-2 h-fit" onclick={() => setShowMore((prev) => !prev)}>
+					<button class="grid-col-start-2 h-fit p-0" onclick={() => setShowMore((prev) => !prev)}>
 						<Chevron isOpen={showMore()} />
 					</button>
-					<div class="grid-col-span-2">
-						<Show when={showMore()}>
+					<div
+						class="grid-col-span-2 p-l-4 grid transition-all duration-400 ease-in-out"
+						style={{
+							'grid-template-rows': showMore() ? '1fr' : '0fr',
+							visibility: showMore() ? 'visible' : 'hidden',
+						}}
+					>
+						<div style={{ overflow: 'hidden' }}>
 							<For each={feat.description.slice(1)}>{(desc) => <div innerHTML={desc} />}</For>
-						</Show>
+						</div>
 					</div>
 				</Show>
 			</div>
@@ -60,10 +78,12 @@ function ClassFeature({ feat }: { feat: { title: string; level: number; descript
 }
 
 function Chevron(props: { isOpen: boolean }) {
-	console.log('isOpen', props.isOpen);
 	return (
 		<svg
-			class={`${props.isOpen ? 'rotate-180' : 'yo'} sakdmaskdm`}
+			class="transition-transform duration-400 ease-in-out scale-75"
+			classList={{
+				'rotate-180': props.isOpen,
+			}}
 			fill="none"
 			height="24"
 			stroke="currentColor"

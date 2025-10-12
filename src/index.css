@@ -16,6 +16,7 @@
 
 body {
 	min-height: 100vh;
+	font-family: "Karla", sans-serif;
 	-webkit-font-smoothing: antialiased;
 	line-height: 1.5;
 }
@@ -58,6 +59,25 @@ h4,
 h5,
 h6 {
 	text-wrap: balance;
+}
+
+table {
+	/* border-collapse: collapse; */
+}
+
+td,
+th {
+	padding: 0.33rem;
+	vertical-align: top;
+	border-bottom: 1px dashed currentColor;
+}
+
+tr {
+	&:last-child {
+		& td {
+			border-bottom: none;
+		}
+	}
 }
 
 hr {

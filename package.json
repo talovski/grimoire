@@ -24,6 +24,7 @@
 		"@types/node": "^24.6.0",
 		"@unocss/core": "^66.5.3",
 		"@unocss/preset-attributify": "^66.5.3",
+		"@unocss/preset-web-fonts": "^66.5.3",
 		"@unocss/reset": "^66.5.3",
 		"happy-dom": "^20.0.0",
 		"typescript": "~5.9.3",

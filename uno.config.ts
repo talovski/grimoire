@@ -1,4 +1,11 @@
-import { defineConfig, presetAttributify, presetMini, presetTypography, transformerAttributifyJsx } from 'unocss';
+import {
+	defineConfig,
+	presetAttributify,
+	presetMini,
+	presetTypography,
+	presetWebFonts,
+	transformerAttributifyJsx,
+} from 'unocss';
 
 export default defineConfig({
 	presets: [
@@ -8,6 +15,22 @@ export default defineConfig({
 		}),
 		presetMini(),
 		presetTypography(),
+		presetWebFonts({
+			provider: 'fontsource',
+			fonts: {
+				sans: 'karla',
+				serif: 'alegreya',
+			},
+		}),
 	],
+	theme: {
+		colors: {
+			neutral200: '#EFEFEF',
+		},
+
+		// colors: {
+		// boofoo: '#FFF000',
+		// },
+	},
 	transformers: [transformerAttributifyJsx()],
 });

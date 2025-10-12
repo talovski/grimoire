@@ -45,6 +45,9 @@ importers:
       '@unocss/preset-attributify':
         specifier: ^66.5.3
         version: 66.5.3
+      '@unocss/preset-web-fonts':
+        specifier: ^66.5.3
+        version: 66.5.3
       '@unocss/reset':
         specifier: ^66.5.3
         version: 66.5.3
