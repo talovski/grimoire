@@ -16,13 +16,14 @@ export const EMPTY_CHAR: CharacterType = {
 	},
 	hp_at_level_one: 0,
 	race: '',
-	hit_die: '',
+	hit_die: 0,
 	AC: 10,
 	ACModifier: '',
 	speed: 30,
 	skills: [''],
-	armor: '',
+	armor: [],
 	saving_throws: [''],
+	weapons: [],
 };
 
 export const [character, setCharacter] = createStore<CharacterType>(EMPTY_CHAR);

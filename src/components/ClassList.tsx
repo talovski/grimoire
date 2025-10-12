@@ -10,7 +10,7 @@ export default function ClassList() {
 	});
 
 	return (
-		<div>
+		<div class="flex flex-col gap-8">
 			<For each={classes()}>{(classData) => <ClassCard classData={classData} />}</For>
 		</div>
 	);

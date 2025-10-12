@@ -6,6 +6,9 @@ export function transformClass(raw: ClassData): CleanClass {
 	const features = parseFeatures(raw.desc);
 	const { level1, progression } = categorizeByLevel(features);
 
+	const table = raw.table.replace(/Proficiency Bonus/g, 'Prof. Bonus');
+	console.log('TABLE', table);
+
 	const obj: CleanClass = {
 		name: raw.name,
 		slug: raw.slug,
@@ -29,15 +32,15 @@ export function transformClass(raw: ClassData): CleanClass {
 			level1: level1.map((s) => ({
 				title: s.title,
 				level: 1,
-				description: s.content.join(''),
+				description: s.content,
 			})),
 			progression: progression.map((s) => ({
 				title: s.title,
 				level: s.level, // already extracted!
-				description: s.content.join(''),
+				description: s.content,
 			})),
 		},
-		table: marked.parse(raw.table) as string,
+		table: marked.parse(table) as string,
 		spellcasting_ability: raw.spellcasting_ability,
 		subtypes_name: raw.subtypes_name,
 		document__license_url: raw.document__license_url,

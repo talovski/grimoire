@@ -66,12 +66,12 @@ export type CleanClass = {
 		level1: {
 			title: string;
 			level: number;
-			description: string;
+			description: string[];
 		}[];
 		progression: {
 			title: string;
 			level: number;
-			description: string;
+			description: string[];
 		}[];
 	};
 	table: string;
