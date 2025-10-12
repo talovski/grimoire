@@ -3,12 +3,14 @@ import type { CleanClass } from '@/lib/types/ClassData';
 import { setCharacter } from '@/stores/character';
 
 export default function ClassCard({ classData }: { classData: CleanClass }) {
-	const [showProgression, setShowProgression] = createSignal(false);
+	const [showTable, setTable] = createSignal(false);
+	const [showMoreFeats, setShowMoreFeats] = createSignal(false);
+
 	return (
-		<div class="bg-neutral100 pos-relative rounded-md p-5 grid grid-cols-[1fr_auto] shadow-sm">
+		<div class="bg-neutral200 pos-relative rounded-md p-5 grid grid-cols-[1fr_auto] shadow-sm">
 			<h3 class="text-2xl p-b-2">{classData.name}</h3>
 			<button
-				class="grid-col-start-2 pos-sticky top-4 pos-relative z-1 shadow-lg hover:shadow-xl"
+				class="grid-col-start-2 pos-sticky top-14 pos-relative z-1 shadow-lg hover:shadow-xl"
 				onclick={() =>
 					setCharacter({
 						class: classData.slug,
@@ -25,22 +27,41 @@ export default function ClassCard({ classData }: { classData: CleanClass }) {
 				<For each={classData.features.level1}>{(feat) => <ClassFeature feat={feat} />}</For>
 			</div>
 			<div class="grid-col-span-2 p-t-3">
-				<button class="flex gap-1" onclick={() => setShowProgression((prev) => !prev)}>
-					{showProgression() ? 'Hide' : 'Show'} progression{' '}
+				<button class="flex gap-1" onclick={() => setShowMoreFeats((prev) => !prev)}>
+					{showMoreFeats() ? 'Hide' : 'Show'} higher level features{' '}
 					<span>
-						<Chevron isOpen={showProgression()} />
+						<Chevron isOpen={showMoreFeats()} />
+					</span>
+				</button>
+				<div
+					class="text-sm p-t-3 grid transition-all duration-400 ease-in-out gap-3 grid-rows-[0fr]"
+					style={{
+						'grid-template-rows': showMoreFeats() ? '1fr' : '0fr',
+						visibility: showMoreFeats() ? 'visible' : 'hidden',
+					}}
+				>
+					<div class="overflow-hidden flex flex-col gap-3">
+						<For each={classData.features.progression}>{(feat) => <ClassFeature feat={feat} />}</For>
+					</div>
+				</div>
+			</div>
+
+			<div class="grid-col-span-2 p-t-3">
+				<button class="flex gap-1" onclick={() => setTable((prev) => !prev)}>
+					{showTable() ? 'Hide' : 'Show'} progression table{' '}
+					<span>
+						<Chevron isOpen={showTable()} />
 					</span>
 				</button>
 				<div
 					class="text-sm p-t-3 grid transition-all duration-400 ease-in-out gap-3"
 					style={{
-						'grid-template-rows': showProgression() ? '1fr' : '0fr',
-						visibility: showProgression() ? 'visible' : 'hidden',
+						'grid-template-rows': showTable() ? '1fr' : '0fr',
+						visibility: showTable() ? 'visible' : 'hidden',
 					}}
 				>
 					<div class="overflow-hidden flex flex-col gap-3">
 						<div innerHTML={classData.table} />
-						<For each={classData.features.progression}>{(feat) => <ClassFeature feat={feat} />}</For>
 					</div>
 				</div>
 			</div>

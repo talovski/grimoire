@@ -23,14 +23,14 @@ export default defineConfig({
 			},
 		}),
 	],
-	theme: {
-		colors: {
-			neutral200: '#EFEFEF',
-		},
-
-		// colors: {
-		// boofoo: '#FFF000',
-		// },
+	extendTheme: (theme) => {
+		return {
+			...theme,
+			colors: {
+				neutral200: '#EFEFEF',
+				red100: '#223535',
+			},
+		};
 	},
 	transformers: [transformerAttributifyJsx()],
 });

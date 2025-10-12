@@ -1,8 +1,10 @@
 import { createEffect, createSignal, on, Show } from 'solid-js';
+import { classes } from '@/stores/classes';
 import { character } from '../stores/character';
 
 export default function CharacterPreview() {
 	const [highlight, setHighlight] = createSignal(false);
+	const currentClass = () => classes()?.find((c) => c.slug === character.class);
 	let timeoutId: ReturnType<typeof setTimeout> | undefined;
 
 	createEffect(
@@ -20,8 +22,8 @@ export default function CharacterPreview() {
 
 	return (
 		<aside
-			class="w-[280px] p-4 pos-sticky top-4 h-fit transition-colors duration-600 rounded-md"
-			classList={{ 'bg-neutral200': highlight() }}
+			class="w-[280px] p-4 pos-sticky top-14 h-fit transition-all duration-600 rounded-md"
+			classList={{ 'bg-neutral200 scale-110': highlight() }}
 		>
 			<p>
 				<span class="font-bold">Class</span>: <span>{character.class?.[0].toUpperCase()}</span>
@@ -43,6 +45,13 @@ export default function CharacterPreview() {
 				<p>
 					<span class="font-bold">Saving throws</span>: {character.saving_throws.join(', ')}
 				</p>
+
+				<Show when={!!currentClass()?.skillChoices?.choose}>
+					<div class="p-t-3">
+						<p>Now you need to choose {currentClass()?.skillChoices?.choose} skills</p>
+					</div>
+					{/* {currentClass()?.skillChoices?.choose} {currentClass()?.skillChoices?.from} */}
+				</Show>
 			</Show>
 		</aside>
 	);
