@@ -6,6 +6,10 @@ import { Route, Router } from '@solidjs/router';
 
 const root = document.getElementById('root');
 
+if ('serviceWorker' in navigator) {
+	navigator.serviceWorker.register(new URL('/sw.js', import.meta.url), { type: 'module' });
+}
+
 render(
 	() => (
 		<Router>
