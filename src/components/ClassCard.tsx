@@ -1,7 +1,7 @@
-import type { ClassData } from '@/lib/types/ClassData';
+import type { CleanClass } from '@/lib/types/ClassData';
 import { setCharacter } from '@/stores/character';
 
-export default function ClassCard({ classData }: { classData: ClassData }) {
+export default function ClassCard({ classData }: { classData: CleanClass }) {
 	return (
 		<div>
 			<h3>{classData.name}</h3>
