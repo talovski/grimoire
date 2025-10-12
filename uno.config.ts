@@ -1,26 +1,13 @@
-import {
-	defineConfig,
-	presetAttributify,
-	presetTypography,
-	presetWebFonts,
-	presetWind3,
-	transformerAttributifyJsx,
-} from 'unocss';
+import { defineConfig, presetAttributify, presetMini, presetTypography, transformerAttributifyJsx } from 'unocss';
 
 export default defineConfig({
 	presets: [
 		presetAttributify({
-			prefix: 'css',
+			prefix: 'un-',
+			prefixedOnly: true,
 		}),
-		presetWind3(),
+		presetMini(),
 		presetTypography(),
-		presetWebFonts({
-			fonts: {
-				sans: 'PT Sans',
-				serif: 'Alegreya',
-				mono: 'JetBrains Mono',
-			},
-		}),
 	],
 	transformers: [transformerAttributifyJsx()],
 });

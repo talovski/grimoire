@@ -1,8 +1,6 @@
 {
 	"recommendations": [
 		"biomejs.biome",
-		"csstools.postcss",
-		"clinyong.vscode-css-modules",
-		"vunguyentuan.vscode-css-variables"
+		"antfu.unocss"
 	]
 }
