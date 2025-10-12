@@ -9,11 +9,11 @@ function App() {
 	return (
 		<>
 			<div>
-				<a href="https://vite.dev" target="_blank" rel="noreferrer">
-					<img src={viteLogo} class="logo" alt="Vite logo" />
+				<a href="https://vite.dev" rel="noreferrer" target="_blank">
+					<img alt="Vite logo" class="logo" src={viteLogo} />
 				</a>
-				<a href="https://solidjs.com" target="_blank" rel="noreferrer">
-					<img src={solidLogo} class="logo solid" alt="Solid logo" />
+				<a href="https://solidjs.com" rel="noreferrer" target="_blank">
+					<img alt="Solid logo" class="logo solid" src={solidLogo} />
 				</a>
 			</div>
 			<h1>Vite + Solid</h1>

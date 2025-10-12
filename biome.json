@@ -1,8 +1,6 @@
 {
 	"$schema": "https://biomejs.dev/schemas/2.2.5/schema.json",
-	"formatter": {
-		"lineWidth": 120
-	},
+	"formatter": { "lineWidth": 120 },
 	"linter": {
 		"enabled": true,
 		"rules": {
@@ -15,6 +13,12 @@
 		"formatter": { "quoteStyle": "single" }
 	},
 	"assist": {
-		"actions": { "source": { "organizeImports": "on" } }
+		"actions": {
+			"source": {
+				"organizeImports": "on",
+				"useSortedAttributes": "on",
+				"useSortedProperties": "on"
+			}
+		}
 	}
 }
