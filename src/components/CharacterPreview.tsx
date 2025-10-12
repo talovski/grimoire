@@ -84,7 +84,7 @@ function SkillProficiencies(props: { skills: SkillChoice | null | undefined }) {
 
 	function handleSelected(option: string) {
 		const max = props?.skills?.choose;
-		if (!max) return null;
+		if (!max) return;
 
 		setSelected(prev => prev.includes(option)
 			? prev.filter(item => item !== option)
@@ -95,33 +95,55 @@ function SkillProficiencies(props: { skills: SkillChoice | null | undefined }) {
 	}
 
 	return (
-		<Show when={props?.skills?.choose}>
-			<div class="p-t-3">
-				<p>
-					Now you need to choose
-					{' '}
-					{props?.skills?.choose}
-					{' '}
-					skills
-				</p>
-				<For each={props?.skills?.from}>
-					{(skill) => {
-						return (
-							<div>
-								<label for={`skill-` + skill}>{skill}</label>
-								<input
-									id={`skill-` + skill}
-									name={`skill-` + skill}
-									type="checkbox"
-									onChange={() => handleSelected(skill)}
-									checked={selected().includes(skill)}
-									disabled={!!props?.skills?.choose && !selected().includes(skill) && selected().length >= props?.skills?.choose}
-								/>
-							</div>
-						);
-					}}
-				</For>
-			</div>
+		<Show when={props?.skills?.choose} keyed>
+			{choose => (
+				<form class="p-t-3">
+					<fieldset class="border-none p-0">
+						<legend class="p-b-2">
+							Choose
+							{' '}
+							{choose}
+							{' '}
+							skill
+							{choose > 1 ? 's' : ''}
+							{' '}
+							(
+							{selected().length}
+							/
+							{choose}
+							{' '}
+							selected)
+						</legend>
+						<div class="flex flex-col gap-2">
+							<For each={props?.skills?.from}>
+								{(skill) => {
+									const isSelected = () => selected().includes(skill);
+									const isDisabled = () => !isSelected() && selected().length >= props.skills!.choose;
+
+									return (
+										<label
+											class="flex cursor-pointer items-center gap-2"
+											classList={{
+												'opacity-50 cursor-not-allowed': isDisabled(),
+											}}
+										>
+											<input
+												type="checkbox"
+												name="skills"
+												value={skill}
+												onChange={() => handleSelected(skill)}
+												checked={isSelected()}
+												disabled={isDisabled()}
+											/>
+											<span>{skill}</span>
+										</label>
+									);
+								}}
+							</For>
+						</div>
+					</fieldset>
+				</form>
+			)}
 		</Show>
 	);
 }
