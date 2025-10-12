@@ -4,7 +4,7 @@ import FormNavigationStrip from '~/components/FormNavigationStrire';
 
 export default function Create() {
 	return (
-		<div class="bg-neutral-200 px-8 py-14">
+		<div class="px-8 py-14">
 			<FormNavigationStrip />
 			<h1>Creare your character</h1>
 			<div class="pos-relative grid grid-cols-[1fr_auto] gap-6 pt-3">

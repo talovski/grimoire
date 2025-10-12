@@ -1,13 +1,17 @@
 import { createSignal, For, Show } from 'solid-js';
 import { setCharacter } from '~/stores/character';
+import { character } from '~/stores/character';
+import { classes } from '~/stores/classes';
 import type { CleanClass } from '~/lib/types/ClassData';
 
 export default function ClassCard(props: { classData: CleanClass }) {
 	const [showTable, setTable] = createSignal(false);
 	const [showMoreFeats, setShowMoreFeats] = createSignal(false);
 
+	const currentClass = () => classes()?.find(c => c.slug === character.class);
+
 	return (
-		<div class="pos-relative grid grid-cols-[1fr_auto] rounded-md bg-neutral200 p-5 shadow-sm">
+		<div class="bg-neutral-100 pos-relative grid grid-cols-[1fr_auto] rounded-md p-5 shadow-sm">
 			<h3 class="p-b-2 text-2xl">{props.classData.name}</h3>
 			<button
 				class="pos-relative pos-sticky top-14 z-1 grid-col-start-2 shadow-lg hover:shadow-xl"
@@ -20,7 +24,7 @@ export default function ClassCard(props: { classData: CleanClass }) {
 						saving_throws: props.classData.proficiencies.savingThrows,
 					})}
 			>
-				Select class
+				{currentClass()?.slug === props.classData.slug ? 'Selected' : 'Select class'}
 			</button>
 			<div class="grid-col-span-2 flex flex-col gap-3">
 				<For each={props.classData.features.level1}>
@@ -29,16 +33,14 @@ export default function ClassCard(props: { classData: CleanClass }) {
 			</div>
 			<div class="grid-col-span-2 p-t-3">
 				<button
-					class="flex gap-1"
+					class="flex items-center gap-1"
 					onClick={() => setShowMoreFeats(prev => !prev)}
 				>
 					{showMoreFeats() ? 'Hide' : 'Show'}
 					{' '}
 					higher level features
 					{' '}
-					<span>
-						<Chevron isOpen={showMoreFeats()} />
-					</span>
+					<Chevron isOpen={showMoreFeats()} />
 				</button>
 				<div
 					class="grid gap-3 p-t-3 text-sm transition-all duration-400 ease-in-out"
@@ -56,14 +58,12 @@ export default function ClassCard(props: { classData: CleanClass }) {
 			</div>
 
 			<div class="grid-col-span-2 p-t-3">
-				<button class="flex gap-1" onClick={() => setTable(prev => !prev)}>
+				<button class="flex items-center gap-1" onClick={() => setTable(prev => !prev)}>
 					{showTable() ? 'Hide' : 'Show'}
 					{' '}
 					progression table
 					{' '}
-					<span>
-						<Chevron isOpen={showTable()} />
-					</span>
+					<Chevron isOpen={showTable()} />
 				</button>
 				<div
 					class="grid gap-3 p-t-3 text-sm transition-all duration-400 ease-in-out"
@@ -119,22 +119,11 @@ function ClassFeature(props: {
 
 function Chevron(props: { isOpen: boolean }) {
 	return (
-		<svg
-			class="scale-75 transition-transform duration-400 ease-in-out"
+		<div
+			class="i-lucide-chevron-down transition-transform duration-300 ease-in-out"
 			classList={{
 				'rotate-180': props.isOpen,
 			}}
-			fill="none"
-			height="24"
-			stroke="currentColor"
-			stroke-linecap="round"
-			stroke-linejoin="round"
-			stroke-width="2"
-			viewBox="0 0 24 24"
-			width="24"
-			xmlns="http://www.w3.org/2000/svg"
-		>
-			<path d="m6 9 6 6 6-6" />
-		</svg>
+		/>
 	);
 }

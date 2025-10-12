@@ -6,9 +6,6 @@ import solid from 'vite-plugin-solid';
 
 export default defineConfig({
 	plugins: [UnoCSS(), solid()],
-	css: {
-		modules: { localsConvention: 'camelCase' },
-	},
 	test: {
 		environment: 'happy-dom',
 	},

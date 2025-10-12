@@ -10,11 +10,11 @@ const stageNames: Record<FormStage, { index: FormStage; name: string }> = {
 };
 export default function FormNavigationStrip() {
 	return (
-		<div class="pos-fixed left-0 top-0 z-2 w-full flex items-center gap-6 bg-neutral200 p-y-2 p-inline-8 shadow-sm">
+		<div class="bg-neutral-300 pos-fixed left-0 top-0 z-2 w-full flex items-center gap-6 p-y-2 p-inline-8 shadow-sm">
 			<button
 				class="animate-appear transition-background flex items-center border-1 border-solid transition-duration-300"
 				classList={{
-					'bg-[#BE905A] gap-2': !!character?.class,
+					'bg-greenish text-neutral-50 gap-2': !!character?.class,
 				}}
 			>
 				{stageNames.class.name}

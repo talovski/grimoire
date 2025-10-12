@@ -16,10 +16,13 @@ if ('serviceWorker' in navigator) {
 
 render(
 	() => (
-		<Router>
-			<Route component={App} path="/" />
-			<Route component={Create} path="/create" />
-		</Router>
+		<>
+
+			<Router>
+				<Route component={App} path="/" />
+				<Route component={Create} path="/create" />
+			</Router>
+		</>
 	),
 	root!,
 );
