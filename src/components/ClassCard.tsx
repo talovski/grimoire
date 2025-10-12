@@ -11,7 +11,7 @@ export default function ClassCard(props: { classData: CleanClass }) {
 	const currentClass = () => classes()?.find(c => c.slug === character.class);
 
 	return (
-		<div class="bg-neutral-100 pos-relative grid grid-cols-[1fr_auto] rounded-md p-5 shadow-sm">
+		<div class="pos-relative grid grid-cols-[1fr_auto] rounded-md bg-neutral-100 p-5 shadow-sm">
 			<h3 class="p-b-2 text-2xl">{props.classData.name}</h3>
 			<button
 				class="pos-relative pos-sticky top-14 z-1 grid-col-start-2 shadow-lg hover:shadow-xl"

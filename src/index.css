@@ -76,6 +76,12 @@ h6 {
 	text-wrap: balance;
 }
 
+table {
+	white-space: no-wrap;
+	overflow-x: auto;
+	display: block;
+}
+
 td,
 th {
 	padding: 0.33rem;
@@ -89,6 +95,10 @@ tr {
 			border-bottom: none;
 		}
 	}
+}
+
+td:nth-child(3) {
+	white-space: break-spaces;
 }
 
 hr {
