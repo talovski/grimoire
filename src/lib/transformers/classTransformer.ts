@@ -16,25 +16,25 @@ export function transformClass(raw: ClassData): CleanClass {
 		proficiencies: {
 			armor: raw.prof_armor
 				.split(',')
-				.map((s) => s.trim())
+				.map(s => s.trim())
 				.filter(Boolean),
 			weapons: raw.prof_weapons
 				.split(',')
-				.map((s) => s.trim())
+				.map(s => s.trim())
 				.filter(Boolean),
 			savingThrows: raw.prof_saving_throws
 				.split(',')
-				.map((s) => s.trim())
+				.map(s => s.trim())
 				.filter(Boolean),
 		},
 		skillChoices: parseSkillChoices(raw.prof_skills),
 		features: {
-			level1: level1.map((s) => ({
+			level1: level1.map(s => ({
 				title: s.title,
 				level: 1,
 				description: s.content,
 			})),
-			progression: progression.map((s) => ({
+			progression: progression.map(s => ({
 				title: s.title,
 				level: s.level, // already extracted!
 				description: s.content,
@@ -65,18 +65,19 @@ function parseFeatures(md: string) {
 			if (curr) {
 				features.push({
 					title: curr.title,
-					content: curr.elements.map((el) => el.outerHTML),
+					content: curr.elements.map(el => el.outerHTML),
 				});
 			}
 			curr = { title: node.textContent || '', elements: [] };
-		} else if (curr) {
+		}
+		else if (curr) {
 			curr.elements.push(node);
 		}
 	}
 	if (curr) {
 		features.push({
 			title: curr.title,
-			content: curr.elements.map((el) => el.outerHTML),
+			content: curr.elements.map(el => el.outerHTML),
 		});
 	}
 
@@ -85,14 +86,15 @@ function parseFeatures(md: string) {
 
 function categorizeByLevel(sections: Section[]) {
 	const level1: Section[] = [];
-	const progression: Array<Section & { level: number }> = [];
+	const progression: (Section & { level: number })[] = [];
 
 	for (const section of sections) {
 		const level = extractLevel(section);
 
 		if (level === 1) {
 			level1.push(section);
-		} else {
+		}
+		else {
 			progression.push({ ...section, level });
 		}
 	}
@@ -110,8 +112,8 @@ export function parseSkillChoices(text: string): SkillChoice | null {
 
 	const skills = skillsText
 		.split(/,| and /)
-		.map((s) => s.trim())
-		.filter((s) => s.length > 0);
+		.map(s => s.trim())
+		.filter(s => s.length > 0);
 
 	return {
 		choose: chooseCount,

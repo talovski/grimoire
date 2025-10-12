@@ -1,6 +1,6 @@
 {
 	"recommendations": [
-		"biomejs.biome",
-		"antfu.unocss"
+		"antfu.unocss",
+		"dbaeumer.vscode-eslint"
 	]
 }

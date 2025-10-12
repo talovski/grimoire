@@ -1,27 +1,27 @@
 import type { SkillChoice } from './Api';
 
-export type ClassIndex =
-	| 'barbarian'
-	| 'bard'
-	| 'rogue'
-	| 'ranger'
-	| 'wizard'
-	| 'sorcerer'
-	| 'paladin'
-	| 'fighter'
-	| 'monk'
-	| 'cleric'
-	| 'druid'
-	| 'warlock';
+export type ClassIndex
+	= | 'barbarian'
+		| 'bard'
+		| 'rogue'
+		| 'ranger'
+		| 'wizard'
+		| 'sorcerer'
+		| 'paladin'
+		| 'fighter'
+		| 'monk'
+		| 'cleric'
+		| 'druid'
+		| 'warlock';
 
-export type ClassListData = {
+export interface ClassListData {
 	count: number;
 	next: null | string;
 	previous: null | string;
 	results: ClassData[];
-};
+}
 
-export type ClassData = {
+export interface ClassData {
 	name: string;
 	slug: ClassIndex;
 	desc: string;
@@ -50,9 +50,9 @@ export type ClassData = {
 	document__title: string;
 	document__license_url: string;
 	document__url: string;
-};
+}
 
-export type CleanClass = {
+export interface CleanClass {
 	name: string;
 	slug: ClassIndex;
 	hitDie: number;
@@ -81,4 +81,4 @@ export type CleanClass = {
 	document__title: string;
 	document__license_url: string;
 	document__url: string;
-};
+}

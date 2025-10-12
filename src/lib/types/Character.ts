@@ -2,7 +2,7 @@ import type { ClassIndex } from './ClassData';
 
 export type AbilityScore = 'dex' | 'str' | 'wis' | 'int' | 'cha' | 'con';
 
-export type CharacterType = {
+export interface CharacterType {
 	name: string;
 	level: number;
 	class: ClassIndex | null;
@@ -17,4 +17,4 @@ export type CharacterType = {
 	armor: string[];
 	weapons: string[];
 	saving_throws: string[];
-};
+}

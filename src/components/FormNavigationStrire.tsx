@@ -1,5 +1,5 @@
-import { character } from '@/stores/character';
-import type { FormStage } from '@/stores/create-form';
+import { character } from '~/stores/character';
+import type { FormStage } from '~/stores/create-form';
 
 const stageNames: Record<FormStage, { index: FormStage; name: string }> = {
 	class: { index: 'class', name: 'Class' },
@@ -10,9 +10,9 @@ const stageNames: Record<FormStage, { index: FormStage; name: string }> = {
 };
 export default function FormNavigationStrip() {
 	return (
-		<div class="pos-fixed top-0 p-inline-8 w-full left-0 p-y-2 z-2 flex items-center bg-neutral200 gap-6 shadow-sm">
+		<div class="pos-fixed left-0 top-0 z-2 w-full flex items-center gap-6 bg-neutral200 p-y-2 p-inline-8 shadow-sm">
 			<button
-				class="animate-appear flex items-center transition-background transition-duration-300 border-solid border-1"
+				class="animate-appear transition-background flex items-center border-1 border-solid transition-duration-300"
 				classList={{
 					'bg-[#BE905A] gap-2': !!character?.class,
 				}}
