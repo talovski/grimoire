@@ -49,7 +49,7 @@ export default defineConfig(
 			...tailwind.configs['recommended-error'].rules,
 
 			// or configure rules individually
-			'better-tailwindcss/enforce-consistent-line-wrapping': ['warn', { printWidth: 100, indent: 'tab' }],
+			'better-tailwindcss/enforce-consistent-line-wrapping': ['warn', { printWidth: 500, indent: 'tab', group: 'never', preferSingleLine: false }],
 		},
 		settings: {
 			'better-tailwindcss': {

@@ -11,10 +11,7 @@ const stageNames: Record<FormStage, { index: FormStage; name: string }> = {
 };
 export default function FormNavigationStrip() {
 	return (
-		<div class={`
-			fixed top-0 left-0 z-2 flex w-full items-center gap-6 bg-neutral-300 px-8 py-2 shadow-sm
-		`}
-		>
+		<div class="fixed top-0 left-0 z-2 flex w-full items-center gap-6 bg-neutral-300 px-8 py-2 shadow-sm">
 			<A
 				href="/create/class"
 				class="flex items-center border-1 border-solid"
