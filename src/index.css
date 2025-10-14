@@ -1,54 +1,112 @@
-*,
-*:before,
-*:after {
-	box-sizing: inherit;
-}
+@import '@fontsource-variable/karla';
+@import '@fontsource-variable/karla/wght-italic.css';
+@import '@fontsource-variable/crimson-pro';
+@import '@fontsource-variable/crimson-pro/wght-italic.css';
 
-* {
-	margin: 0;
-}
+@import '@evilmartians/harmony/tailwind.css';
+@import 'tailwindcss';
 
-@media (prefers-reduced-motion: no-preference) {
-	html {
-		interpolate-size: allow-keywords;
-	}
+@plugin "daisyui";
+
+
+@theme {
+  --font-sans: 'Karla Variable', Inter, 'SF Pro', sans-serif;
+  --font-serif: 'Crimson Pro Variable', 'New York', Georgia, ui-serif, serif;
+
+  /* --color-*: initial */
 }
 
 body {
-	min-height: 100vh;
-	font-family: "Karla", sans-serif;
-	-webkit-font-smoothing: antialiased;
-	line-height: 1.5;
-	position: relative;
+  font-family: var(--font-sans);
+}
+
+/* *,
+*:before,
+*:after {
+  box-sizing: inherit;
+} */
+
+/* * {
+  margin: 0;
+} */
+
+/* @media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+ */
+/*
+Visual hierarchy with color:
+Most important → Least important:
+
+Selected/active states - accent-500 or accent-600
+Interactive elements - accent-600 (buttons, links)
+Headers/labels - text-primary or accent-700
+Body text - text-secondary
+Supporting text - text-tertiary
+Disabled/placeholder - text-ghost
+
+Use accent color sparingly:
+
+Selected states
+Primary actions
+Section dividers/accents
+Interactive hover states
+
+Don't use accent color:
+
+Large background areas (overwhelming)
+All text (loses hierarchy)
+Every border (visual noise)
+
+Background: --bg-app (#F5F3F0)
+Cards: --bg-surface (#FAFAF8)
+Selected card: --accent-50 background + --accent-500 border
+Buttons: --accent-600
+Text: --text-primary for headers, --text-secondary for body
+Borders: --border-light
+Shadows: Warm brown-tinted (already defined)
+Hover states: --accent-200 borders
+Focus rings: --accent-100 glow
+
+*/
+/* 
+body {
+  min-height: 100vh;
+  font-family: "Karla", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+  position: relative;
 }
 
 body::after {
-	content: '';
-	position: fixed;
-	inset: 0;
-	pointer-events: none;
-	z-index: 9999;
-	background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise' %3E%3CfeTurbulence type='fractalNoise' baseFrequency='3.5' numOctaves='1' /%3E%3CfeColorMatrix type='saturate' values='0' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' /%3E%3C/svg%3E");
-	background-size: 200px 200px;
-	/* small repeating tile */
-	opacity: 0.4;
-	mix-blend-mode: overlay;
-}
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise' %3E%3CfeTurbulence type='fractalNoise' baseFrequency='3.5' numOctaves='1' /%3E%3CfeColorMatrix type='saturate' values='0' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' /%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  /* small repeating tile */
+/* opacity: 0.4; */
+/* mix-blend-mode: overlay; */
+/* } */
 
 img,
 picture,
 video,
 canvas,
 svg {
-	display: block;
-	max-width: 100%;
+  display: block;
+  max-width: 100%;
 }
 
 input,
 button,
 textarea,
 select {
-	font: inherit;
+  font: inherit;
 }
 
 p,
@@ -58,12 +116,12 @@ h3,
 h4,
 h5,
 h6 {
-	hyphens: auto;
-	overflow-wrap: break-word;
+  hyphens: auto;
+  overflow-wrap: break-word;
 }
 
 p {
-	text-wrap: pretty;
+  text-wrap: pretty;
 }
 
 h1,
@@ -72,44 +130,44 @@ h3,
 h4,
 h5,
 h6 {
-	margin: 0;
-	text-wrap: balance;
+  margin: 0;
+  text-wrap: balance;
 }
 
 table {
-	white-space: no-wrap;
-	overflow-x: auto;
-	display: block;
+  white-space: no-wrap;
+  overflow-x: auto;
+  display: block;
 }
 
 td,
 th {
-	padding: 0.33rem;
-	vertical-align: top;
-	border-bottom: 1px dashed currentColor;
+  padding: 0.33rem;
+  vertical-align: top;
+  border-bottom: 1px dashed currentColor;
 }
 
 tr {
-	&:last-child {
-		& td {
-			border-bottom: none;
-		}
-	}
+  &:last-child {
+    & td {
+      border-bottom: none;
+    }
+  }
 }
 
 td:nth-child(3) {
-	white-space: break-spaces;
+  white-space: break-spaces;
 }
 
 hr {
-	height: 0;
-	overflow: visible;
-	color: inherit;
-	border-style: solid;
-	border-width: 1px 0 0;
+  height: 0;
+  overflow: visible;
+  color: inherit;
+  border-style: solid;
+  border-width: 1px 0 0;
 }
 
 th {
-	vertical-align: top;
-	text-align: start;
+  vertical-align: top;
+  text-align: start;
 }

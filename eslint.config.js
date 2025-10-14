@@ -1,10 +1,10 @@
 import eslint from '@eslint/js';
 import json from '@eslint/json';
 import stylistic from '@stylistic/eslint-plugin';
-import unocss from '@unocss/eslint-config/flat';
 import { defineConfig } from 'eslint/config';
+import tailwind from 'eslint-plugin-better-tailwindcss';
 import importPlugin from 'eslint-plugin-import';
-import solid from 'eslint-plugin-solid/configs/recommended';
+import solid from 'eslint-plugin-solid/configs/typescript';
 import tseslint from 'typescript-eslint';
 
 export default defineConfig(
@@ -12,7 +12,6 @@ export default defineConfig(
 	tseslint.configs.recommended,
 	tseslint.configs.stylistic,
 	json.configs.recommended,
-	unocss,
 	solid,
 	stylistic.configs.customize({
 		indent: 'tab',
@@ -41,6 +40,28 @@ export default defineConfig(
 			'import/newline-after-import': 'warn',
 			'no-undef': 'off',
 			'solid/no-innerhtml': 'off',
+		},
+	},
+	{
+		plugins: { 'better-tailwindcss': tailwind },
+		rules: {
+			...tailwind.configs['recommended-warn'].rules,
+			...tailwind.configs['recommended-error'].rules,
+
+			// or configure rules individually
+			'better-tailwindcss/enforce-consistent-line-wrapping': ['warn', { printWidth: 100, indent: 'tab' }],
+		},
+		settings: {
+			'better-tailwindcss': {
+				entryPoint: 'src/index.css',
+			},
+		},
+	},
+	{
+		plugins: { stylistic: stylistic },
+		rules: {
+			'@stylistic/indent': ['error', 'tab'],
+			'@stylistic/indent-binary-ops': ['off'],
 		},
 	},
 );

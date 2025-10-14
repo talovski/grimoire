@@ -6,8 +6,6 @@ import App from './App.tsx';
 import Race from './components/Race.tsx';
 import ClassList from '~/components/ClassList.tsx';
 import Create from '~/pages/Create.tsx';
-import '@unocss/reset/normalize.css';
-import 'virtual:uno.css';
 import '~/stores/classes';
 import '~/stores/races';
 

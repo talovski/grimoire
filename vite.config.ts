@@ -1,11 +1,11 @@
 /// <reference types="vitest" />
+import tailwindcss from '@tailwindcss/vite';
 import path from 'node:path';
-import UnoCSS from 'unocss/vite';
 import { defineConfig } from 'vite';
 import solid from 'vite-plugin-solid';
 
 export default defineConfig({
-	plugins: [UnoCSS(), solid()],
+	plugins: [tailwindcss(), solid()],
 	test: {
 		environment: 'happy-dom',
 	},
