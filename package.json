@@ -27,8 +27,6 @@
   "devDependencies": {
     "@eslint/js": "^9.37.0",
     "@eslint/json": "^0.13.2",
-    "@iconify-json/lucide": "^1.2.69",
-    "@iconify-json/material-symbols": "^1.2.41",
     "@solidjs/testing-library": "^0.8.10",
     "@stylistic/eslint-plugin": "^5.4.0",
     "@testing-library/jest-dom": "^6.9.1",
