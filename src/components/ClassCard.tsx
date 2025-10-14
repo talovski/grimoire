@@ -15,51 +15,38 @@ export default function ClassCard(props: { classData: CleanClass }) {
 		<div class="relative grid grid-cols-[1fr_auto] rounded-md bg-neutral-200 p-5 shadow-sm">
 			<h3 class="pb-2 font-serif text-2xl">{props.classData.name}</h3>
 			<Button
-				onClick={() =>
-					setCharacter({
+				attrs={{
+					onClick: () => setCharacter({
 						class: props.classData.slug,
 						hit_die: props.classData.hitDie,
 						armor: props.classData.proficiencies.armor,
 						weapons: props.classData.proficiencies.weapons,
 						saving_throws: props.classData.proficiencies.savingThrows,
-					})}
-				styleExtend="pos-sticky top-14 z-1 grid-col-start-2"
+					}),
+				}}
+				styleExtend="sticky top-14 z-1 col-start-2"
 			>
 				{' '}
 				{currentClass()?.slug === props.classData.slug ? 'Selected' : 'Select class'}
 			</Button>
-			<button
-				class={`
-					sticky top-14 z-1 col-start-2 shadow-lg
-					hover:shadow-xl
-				`}
-				onClick={() =>
-					setCharacter({
-						class: props.classData.slug,
-						hit_die: props.classData.hitDie,
-						armor: props.classData.proficiencies.armor,
-						weapons: props.classData.proficiencies.weapons,
-						saving_throws: props.classData.proficiencies.savingThrows,
-					})}
-			>
-				{currentClass()?.slug === props.classData.slug ? 'Selected' : 'Select class'}
-			</button>
 			<div class="col-span-2 flex flex-col gap-3">
 				<For each={props.classData.features.level1}>
 					{feat => <ClassFeature feat={feat} />}
 				</For>
 			</div>
 			<div class="col-span-2 pt-3">
-				<button
+				<Button
 					class="flex items-center gap-1"
-					onClick={() => setShowMoreFeats(prev => !prev)}
+					attrs={{
+						onClick: () => setShowMoreFeats(prev => !prev),
+					}}
 				>
 					{showMoreFeats() ? 'Hide' : 'Show'}
 					{' '}
 					higher level features
 					{' '}
 					<Chevron isOpen={showMoreFeats()} />
-				</button>
+				</Button>
 				<div
 					class="grid gap-3 pt-3 text-sm transition-all duration-400 ease-in-out"
 					classList={{

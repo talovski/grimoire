@@ -27,7 +27,7 @@ export default function CharacterPreview() {
 
 	return (
 		<aside
-			class="pos-sticky top-14 h-fit w-[280px] rounded-md bg-neutral200 p-4 transition-all duration-300"
+			class="sticky top-14 h-fit w-[280px] rounded-md p-4 transition-all duration-300"
 			classList={{
 				'scale-105': highlight(),
 				'visible': highlight() && visible(),
@@ -35,8 +35,8 @@ export default function CharacterPreview() {
 			}}
 		>
 			<p>
-				<span class="font-bold">Class</span>
-				:
+				<span class="font-bold">Class:</span>
+				{' '}
 				<span>{character.class?.[0].toUpperCase()}</span>
 				{character.class?.slice(1)}
 			</p>
