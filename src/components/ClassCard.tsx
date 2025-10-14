@@ -12,7 +12,7 @@ export default function ClassCard(props: { classData: CleanClass }) {
 	const currentClass = () => classes()?.find(c => c.slug === character.class);
 
 	return (
-		<div class="relative grid grid-cols-[1fr_auto] rounded-md bg-stone-200 p-5 shadow-sm">
+		<div class="relative grid grid-cols-[1fr_auto] rounded-md bg-neutral-200 p-5 shadow-sm">
 			<h3 class="pb-2 font-serif text-2xl">{props.classData.name}</h3>
 			<Button
 				onClick={() =>
