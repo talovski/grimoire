@@ -1,7 +1,11 @@
 import { createSignal, onCleanup, onMount } from 'solid-js';
 import { Button } from '../button/Button';
 
-export default function Dropdown() {
+interface DropdownProps {
+	multiSelect: boolean;
+}
+
+export default function Dropdown(props: DropdownProps) {
 	const [open, setOpen] = createSignal(false);
 	let buttonRef!: HTMLButtonElement;
 	let menuRef!: HTMLUListElement;
@@ -34,8 +38,10 @@ export default function Dropdown() {
 
 		if (e.key === 'Enter' && document.activeElement?.getAttribute('role') === 'menuitem') {
 			e.preventDefault();
-			setOpen(false);
-			buttonRef.focus();
+			if (!props.multiSelect) {
+				setOpen(false);
+				buttonRef.focus();
+			}
 		}
 	};
 
