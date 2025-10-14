@@ -1,3 +1,4 @@
+import { A } from '@solidjs/router';
 import { character } from '~/stores/character';
 import type { FormStage } from '~/stores/create-form';
 
@@ -10,18 +11,22 @@ const stageNames: Record<FormStage, { index: FormStage; name: string }> = {
 };
 export default function FormNavigationStrip() {
 	return (
-		<div class="bg-neutral-300 pos-fixed left-0 top-0 z-2 w-full flex items-center gap-6 p-y-2 p-inline-8 shadow-sm">
-			<button
-				class="animate-appear transition-background flex items-center border-1 border-solid transition-duration-300"
+		<div class={`
+			fixed top-0 left-0 z-2 flex w-full items-center gap-6 bg-neutral-300 px-8 py-2 shadow-sm
+		`}
+		>
+			<A
+				href="/create/class"
+				class="flex items-center border-1 border-solid"
 				classList={{
 					'bg-greenish text-neutral-50 gap-2': !!character?.class,
 				}}
 			>
 				{stageNames.class.name}
 				<Check show={!!character?.class} />
-			</button>
+			</A>
 			<Arrow />
-			<button>{stageNames.race.name}</button>
+			<A href="/create/race">{stageNames.race.name}</A>
 			<Arrow />
 			<button>{stageNames.ability_scores.name}</button>
 			<Arrow />
