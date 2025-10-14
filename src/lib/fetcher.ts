@@ -1,15 +1,19 @@
 import { BASE_URL } from './consts';
 import { transformClass } from './transformers/classTransformer';
-import type { ClassListData } from './types/ClassData';
+import type { ClassData, ResponseListData } from './types/ClassData';
+import type { RaceData } from './types/Race';
 
 export async function fetcher<T>(path: string): Promise<T> {
-	console.log(`${BASE_URL}${path}`);
 	const res = await fetch(`${BASE_URL}${path}`);
 	return (await res.json()) as T;
 }
 
 export async function fetchClasses(path: string) {
-	const raw = await fetcher<ClassListData>(path);
-	console.log('RAW', raw);
+	const raw = await fetcher<ResponseListData<ClassData>>(path);
 	return raw.results.map(transformClass);
+}
+
+export async function fetchRaces(path: string) {
+	const raw = await fetcher<ResponseListData<RaceData>>(path);
+	return raw.results;
 }

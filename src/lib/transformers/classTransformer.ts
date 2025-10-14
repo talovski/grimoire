@@ -7,7 +7,6 @@ export function transformClass(raw: ClassData): CleanClass {
 	const { level1, progression } = categorizeByLevel(features);
 
 	const table = raw.table.replace(/Proficiency Bonus/g, 'Prof. Bonus');
-	console.log('TABLE', table);
 
 	const obj: CleanClass = {
 		name: raw.name,

@@ -14,11 +14,11 @@ export type ClassIndex
 		| 'druid'
 		| 'warlock';
 
-export interface ClassListData {
+export interface ResponseListData<T> {
 	count: number;
 	next: null | string;
 	previous: null | string;
-	results: ClassData[];
+	results: T[];
 }
 
 export interface ClassData {
