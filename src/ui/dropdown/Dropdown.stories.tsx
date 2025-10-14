@@ -12,6 +12,19 @@ export const Primary: Story = {
 	args: {
 		primary: true,
 		label: 'Dropdown',
-		children: 'HELLO',
+		btnContent: 'Button',
+		contentStyleExtend: 'flex flex-col',
+		children: (
+			<>
+				<button>focusable</button>
+				<button>focusable 2</button>
+				<ul>
+					<li>nonfocusable</li>
+					<li>
+						<button>(nested) focusable 3</button>
+					</li>
+				</ul>
+			</>
+		),
 	},
 };
