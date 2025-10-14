@@ -6,8 +6,6 @@
 @import "@evilmartians/harmony/tailwind.css";
 @import "tailwindcss";
 
-@plugin "daisyui";
-
 @theme {
   --font-sans: "Karla Variable", Inter, "SF Pro", sans-serif;
   --font-serif: "Crimson Pro Variable", "New York", Georgia, ui-serif, serif;
@@ -17,25 +15,10 @@
 
 body {
   font-family: var(--font-sans);
+  min-height: 100vh;
 }
 
-/* *,
-*:before,
-*:after {
-  box-sizing: inherit;
-} */
-
-/* * {
-  margin: 0;
-} */
-
-/* @media (prefers-reduced-motion: no-preference) {
-  html {
-    interpolate-size: allow-keywords;
-  }
-}
- */
-/*
+/* 
 Visual hierarchy with color:
 Most important → Least important:
 
