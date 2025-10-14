@@ -79,10 +79,12 @@ export default function Dropdown(props: DropdownProps) {
 	return (
 		<div class="relative">
 			<Button
-				ref={buttonRef}
-				aria-haspopup="true"
-				aria-expanded={open()}
-				onClick={() => setOpen(!open())}
+				attrs={{
+					'ref': buttonRef,
+					'aria-haspopup': 'true',
+					'aria-expanded': open(),
+					'onClick': () => setOpen(!open()),
+				}}
 				styleExtend={props.btnStyleExtend}
 			>
 				{props.btnContent}
