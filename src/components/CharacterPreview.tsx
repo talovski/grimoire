@@ -97,9 +97,9 @@ function SkillProficiencies(props: { skills: SkillChoice | null | undefined }) {
 	return (
 		<Show when={props?.skills?.choose} keyed>
 			{choose => (
-				<form class="p-t-3">
+				<form class="pt-4">
 					<fieldset class="border-none p-0">
-						<legend class="p-b-2">
+						<legend class="pb-2">
 							Choose
 							{' '}
 							{choose}
