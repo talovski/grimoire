@@ -1,17 +1,16 @@
-@import '@fontsource-variable/karla';
-@import '@fontsource-variable/karla/wght-italic.css';
-@import '@fontsource-variable/crimson-pro';
-@import '@fontsource-variable/crimson-pro/wght-italic.css';
+@import "@fontsource-variable/karla";
+@import "@fontsource-variable/karla/wght-italic.css";
+@import "@fontsource-variable/crimson-pro";
+@import "@fontsource-variable/crimson-pro/wght-italic.css";
 
-@import '@evilmartians/harmony/tailwind.css';
-@import 'tailwindcss';
+@import "@evilmartians/harmony/tailwind.css";
+@import "tailwindcss";
 
 @plugin "daisyui";
 
-
 @theme {
-  --font-sans: 'Karla Variable', Inter, 'SF Pro', sans-serif;
-  --font-serif: 'Crimson Pro Variable', 'New York', Georgia, ui-serif, serif;
+  --font-sans: "Karla Variable", Inter, "SF Pro", sans-serif;
+  --font-serif: "Crimson Pro Variable", "New York", Georgia, ui-serif, serif;
 
   /* --color-*: initial */
 }
@@ -101,13 +100,13 @@ svg {
   display: block;
   max-width: 100%;
 }
-
+/* 
 input,
 button,
 textarea,
 select {
   font: inherit;
-}
+} */
 
 p,
 h1,

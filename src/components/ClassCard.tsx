@@ -13,8 +13,8 @@ export default function ClassCard(props: { classData: CleanClass }) {
 	const currentClass = () => classes()?.find(c => c.slug === character.class);
 
 	return (
-		<div class="relative grid grid-cols-[1fr_auto] rounded-md bg-neutral-200 p-5 shadow-sm">
-			<h3 class="pb-2 font-serif text-2xl">{props.classData.name}</h3>
+		<div class="relative grid grid-cols-[1fr_auto] rounded-xs bg-neutral-200 p-5 shadow-2xs">
+			<h3 class="pb-5 font-serif text-3xl">{props.classData.name}</h3>
 			<Button
 				attrs={{
 					onClick: () => setCharacter({
@@ -25,7 +25,7 @@ export default function ClassCard(props: { classData: CleanClass }) {
 						saving_throws: props.classData.proficiencies.savingThrows,
 					}),
 				}}
-				styleExtend="sticky top-14 z-1 col-start-2"
+				styleExtend="sticky top-14 z-1 col-start-2 text-lg"
 			>
 				{' '}
 				{currentClass()?.slug === props.classData.slug ? 'Selected' : 'Select class'}
